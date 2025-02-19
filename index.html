@@ -8,33 +8,74 @@
   <title>Acme App</title>
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./resources/index.css">
 </head>
 
 <body class="bg-[#F6F6FB]">
+  
   <!-- header section -->
   <header>
-    <nav class="fixed top-6 left-1/2 transform -translate-x-1/2 w-[90%] bg-white shadow-md z-50 py-4 px-8 flex justify-between items-center rounded-full">
-      <div class="text-2xl font-bold text-gray-900 relative">
-          Acme<span class="text-[#5E44FF] absolute top-0 right-0 transform translate-x-1 -translate-y-4 text-3xl">.</span>
+    <nav class="fixed top-6 left-1/2 transform -translate-x-1/2 w-[90%] flex justify-between items-center bg-white shadow-sm z-50 py-4 px-8 rounded-full">
+      <!-- Logo -->
+      <div class="text-2xl font-bold text-gray-900 hover:text-[#5E44FF] relative">
+        Acme<span class="text-[#5E44FF] hover:text-gray-900 absolute top-0 right-0 transform translate-x-1 -translate-y-4 text-3xl">.</span>
       </div>
-      <ul class="flex space-x-6">
-          <li><a href="#" class="text-[#5E44FF] font-medium hover:underline">Home</a></li>
-          <li><a href="#" class="text-gray-800 hover:text-purple-600 transition">Features</a></li>
-          <li><a href="#" class="text-gray-800 hover:text-purple-600 transition">Pricing</a></li>
-          <li><a href="#" class="text-gray-800 hover:text-purple-600 transition">Contact</a></li>
-      </ul>
-  </nav>
 
-  <section class="h-[33.33vh] flex flex-col items-center justify-center text-center px-6 mt-24">
-      <span class="bg-purple-100 text-[#5E44FF] px-4 py-1 rounded-full text-sm font-semibold">🌈️ Acme Productivity App</span>
-      <h1 class="text-5xl font-bold text-gray-900 mt-4">Boost Your <span class="text-[#5E44FF]">Productivity</span></h1>
-      <p class="text-gray-600 mt-2 text-lg">Streamline your workflow with our all-in-one productivity app.</p>
-      <a href="#" class="mt-6 px-6 py-3 bg-gray-900 text-white rounded-lg text-lg font-semibold hover:bg-gray-700 transition">Start Free Trial</a>
-  </section>
+      <!-- Desktop Navigation -->
+      <ul class="hidden md:flex space-x-6 text-lg font-medium">
+        <li><a href="#" class="hover:text-[#5E44FF] hover:underline">Home</a></li>
+        <li><a href="#" class="hover:text-[#5E44FF] hover:underline">Features</a></li>
+        <li><a href="#" class="hover:text-[#5E44FF] hover:underline">Pricing</a></li>
+        <li><a href="#" class="hover:text-[#5E44FF] hover:underline">Contact</a></li>
+      </ul>
+
+      <!-- Mobile Menu Button (Flowbite) -->
+      <button id="hamburgerBtn" data-collapse-toggle="mobile-menu" class="md:hidden hover:cursor-pointer ">
+        <svg class="w-6 h-6 text-gray-900 hover:text-[#5E44FF]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </nav>
+
+    <!-- Mobile Hamburger Menu (Hidden by Default) -->
+    <div id="mobile-menu" class="md:hidden fixed inset-0 bg-gray-100 alpha flex flex-col justify-center items-center space-y-6 text-xl font-semibold z-50">
+      <!-- Close Button -->
+      <button id="closeBtn" class="absolute top-6 right-6 text-3xl text-gray-900 hover:text-[#5E44FF]">&times;</button>
+
+      <a href="#" class="hover:text-[#5E44FF] hover:underline">Home</a>
+      <a href="#" class="hover:text-[#5E44FF] hover:underline">Features</a>
+      <a href="#" class="hover:text-[#5E44FF] hover:underline">Pricing</a>
+      <a href="#" class="hover:text-[#5E44FF] hover:underline">Contact</a>
+    </div>
   </header>
 
+  <!-- Hero Section (Fixed and Included) -->
+  <section class=" flex flex-col items-center justify-center text-center px-6 mt-40">
+    <span class="bg-purple-100 text-[#5E44FF] px-4 py-1 rounded-full text-xl font-semibold">🌈️ Acme Productivity App</span>
+    <h1 class="text-[60px] md:text-[80px] font-extrabold text-gray-900 mt-4">Boost Your <span class="text-[#5E44FF]">Product</span>ivity</h1>
+    <p class="text-[#1A1A2C] mt-2 text-2xl font-semibold">Streamline your workflow with our all-in-one productivity app.</p>
+    <a href="#" class="mt-6 px-6 py-3 bg-gray-900 text-white rounded-lg text-lg font-semibold hover:bg-gray-700 transition">Start Free Trial</a>
+  </section>
+
+  <!-- JavaScript for Menu Toggle -->
+  <script>
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const closeBtn = document.getElementById('closeBtn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    // Open Menu
+    hamburgerBtn.addEventListener('click', () => {
+      mobileMenu.classList.remove('hidden');
+    });
+
+    // Close Menu
+    closeBtn.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+    });
+  </script>
+
   <!-- box section -->
-  <div class="borader-2 flex container mx-auto flex-col md:flex-row gap-10 justify-between md:pt-40  p-10 md:p-0">
+  <div class="flex container mx-auto flex-col md:flex-row gap-10 justify-between md:pt-20  p-10 md:p-0">
     <div class="flex flex-col gap-2 md:w-1/3 w-full rounded-3xl bg-blue-100 p-10 pr-20">
       <div class=" bg-white w-[56px] h-[56px] flex justify-center items-center rounded-xl">
         <a href="#" class="text-4xl text-purple-600 flex justify-center items-center"><i class='bx bxs-rocket'></i></a>
@@ -61,6 +102,50 @@
     </div>
   </div>
   </section>
+
+<!-- Contact section -->
+<section class="bg-[#f6f6fb] min-h-screen w-full flex flex-col items-center gap-10 px-6 py-10 md:px-[120px] md:py-[80px]">
+  
+  <!-- Form container -->
+  <section class="bg-white rounded-3xl px-6 py-8 w-[70%] flex flex-col gap-6 md:px-[120px] md:py-[80px]">
+    <h1 class="text-center font-bold text-3xl md:text-5xl leading-tight text-[#1a1a2c]">
+      Get in Touch
+    </h1>
+
+    <!-- Form -->
+    <form action="" class="flex flex-col w-full">
+      <label for="name" class="text-[#5F5F76] text-sm md:text-base">Name</label>
+      <input type="text" placeholder="John Doe"
+        class="bg-white rounded-md p-3 text-[#9393AC] border border-[#E0E0ED] focus:outline-[#5e44ff] w-full" />
+      
+      <label for="email" class="text-[#5F5F76] text-sm md:text-base mt-4">Email</label>
+      <input type="text" placeholder="John@example.com"
+        class="bg-white rounded-md p-3 text-[#9393AC] border border-[#E0E0ED] focus:outline-[#5e44ff] w-full" />
+      
+      <label for="message" class="text-[#5F5F76] text-sm md:text-base mt-4">Message</label>
+      <textarea name="message" id="message" placeholder="Your message..."
+        class="bg-white rounded-md p-3 text-[#9393AC] h-[130px] border border-[#E0E0ED] focus:outline-[#5e44ff] w-full"></textarea>
+
+      <button type="submit"
+        class="bg-[#1A1A2C] text-white w-full h-[56px] rounded-2xl p-4 mt-6 hover:bg-[#5F5F76] focus:bg-[#35354D] border-[#5F5F76] focus:border-[4px] ease-in-out">
+        Submit
+      </button>
+    </form>
+  </section>
+
+  <!-- Footer section -->
+  <footer class="flex flex-col md:flex-row justify-between w-full max-w-[589px] text-center md:text-left">
+    <p class="text-[#5F5F76] font-medium text-sm md:text-base">
+      Acme productivity app ©2024
+    </p>
+    <nav class="flex flex-wrap justify-center md:justify-end gap-4 text-[#1A1A2C] font-semibold mt-4 md:mt-0">
+      <a href="">FAQ</a>
+      <a href="">Terms</a>
+      <a href="">AI Policy</a>
+      <a href="">Pricing</a>
+    </nav>
+  </footer>
+</section>
 </body>
 
 </html>
